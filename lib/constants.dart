@@ -12,10 +12,39 @@ const TextStyle kLargeNumberStyle = TextStyle(
 );
 
 const TextStyle kLargeButtonTextStyle = TextStyle(
-  fontSize: 40,
+  fontSize: 30,
   color: Colors.white,
   fontWeight: FontWeight.w900,
   letterSpacing: 2,
+);
+const TextStyle kTitleTextStyle = TextStyle(
+  fontSize: 40,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
+const TextStyle kNormalWeightStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold
+);
+/*
+const TextStyle kOverWeightStyle = TextStyle(
+
+);
+const TextStyle kNormalWeightStyle = TextStyle(
+
+);
+*/
+
+const TextStyle kBMITextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold
+);
+const TextStyle kBodyTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 22.0,
 );
 
 const kActiveCardColor = Color(0xFF1D1E33),

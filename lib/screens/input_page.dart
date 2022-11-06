@@ -1,9 +1,12 @@
+import 'package:bmi_calculator/components/calculator_brain.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'gender_card.dart';
-import 'reusable_card.dart';
-import 'results_page.dart';
+import '/components/gender_card.dart';
+import '/components/reusable_card.dart';
+import '/components/bottom_button.dart';
+import '/components/round_icon_button.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -24,7 +27,7 @@ class _InputPageState extends State<InputPage> {
         : femaleCardColor = kInactiveCardColor;
   }
 
-  int heightValue = 175, weight = 150, age = 18;
+  int heightValue = 175, weight = 60, age = 18;
 
   Color maleCardColor = kInactiveCardColor,
       femaleCardColor = kInactiveCardColor;
@@ -199,46 +202,23 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/result');
+            BottomButton(
+              title: 'Calculate',
+              onPress: () {
+                CalculatorBrain calc =
+                    CalculatorBrain(height: heightValue, weight: weight);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultsPage(
+                            bmiResult: calc.CalculateBMI(),
+                            resultText: calc.GetResult(),
+                            interpretation: calc.GetInterpretation())));
               },
-              child: Container(
-                color: kAccentColor,
-                height: kBottomContainerHeight,
-                margin: const EdgeInsets.only(top: 10),
-                width: double.infinity,
-                child:  const Center(
-                  child: Text('CALCULATE',
-                  style: kLargeButtonTextStyle,
-                  ),
-                ),
-              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon, required this.changeValue});
-
-  final VoidCallback changeValue;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: changeValue,
-      shape: const CircleBorder(),
-      fillColor: kButtonBackground,
-      constraints: const BoxConstraints.tightFor(
-        width: 50,
-        height: 50,
-      ),
-      child: Icon(icon),
     );
   }
 }

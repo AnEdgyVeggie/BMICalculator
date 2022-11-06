@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '/constants.dart';
 
 const double iconSize = 80, sizedBoxHeight = 15;
 
